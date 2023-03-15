@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --lgray: #bababa;
+    --mgray: #8d8d8d;
+    --dgray: #3a3a3a;
+    --lblue: #a6cbeb;
+    --mblue: #4c96d7;
+    --dblue: #2677bd;
+}
+* {
+    font-family: "Share Tech Mono", monospace;
+}
+li {
+    list-style-type: none;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+.has-my-account {
+    display: grid;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding-right: 1rem;
+}
+.top-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    margin: 0;
+    margin-top: .8rem;
+    background-color: var(--dgray);
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+    font-family: inherit;
+}
+.top-nav li {
+    color: var(--lgray);
+}
+.top-nav li a {
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    color: white;
+}
+.top-nav li a:hover {
+    background-color: var(--mblue);
+    color: var(--dgray);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.center {
+    text-align: center;
+}
+.p-link {
+    color: var(--mblue);
+}
+.p-link:hover {
+    color: var(--dgray);
+}
+h2 {
+    font-size: 1.2rem;
+}
+main {
+    margin-left: .5rem;
+}
+.has-delorean {
+    position: relative;
+}
+.delorean {
+    width: 100%;
+}
+.cover-delorean {
+    position: absolute;
+    top: 0;
+}
+.cover-delorean > p:first-child {
+    color: var(--mblue);
+    font-weight: bold;
+}
+.cover-delorean > p {
+    margin: 0;
+    color: var(--dblue);
+    font-size: .9rem;
+}
+.own-today-medium {
+    display: none;
+}
+.own-today {
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    width: 50%;
+}
+.reviews {
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+.reviews li {
+    list-style-type: disc;
+    padding-bottom: .5rem;
+}
+.has-upgrade {
+    position: relative;
+}
+.upgrade {
+    background-color: var(--mblue);
+    height: 6rem;
+    border: 1px solid var(--dgray);
+}
+.cover-upgrade {
+    height: 5rem;
+    justify-self: center;
+    align-self: center;
+}
+.has-cover-upgrade {
+    position: absolute;
+    top: 0;
+    display: grid;
+    height: 100%;
+    width: 100%;
+}
+.ucard > a {
+    all: revert;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.has-ucard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: .5rem;
+    row-gap: 2rem;
+    padding-right: .5rem;
+    padding-bottom: 2rem;
+}
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+fieldset {
+    background-color: var(--lblue);
+    padding: 2rem;
+    padding-bottom: 1rem;
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid transparent;
+    box-shadow: gray 5px 5px 5px 5px;
+}
+select {
+    display: block;
+    margin-top: 1rem;
+}
+label {
+    display: block;
+}
+label * {
+    display: block;
+    margin-bottom: .5rem;
+}
+label > input, input {
+    width: 10rem;
+    border: 3px solid transparent;
+}
+label > input:invalid:not(:placeholder-shown) {
+    border: 3px solid red;
+}
+fieldset {
+    position: relative;
+}
+.password-input ~ span, .classification-input ~ span {
+    position: absolute;
+    display: none;
+    color: white;
+    background-color: var(--dgray);
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 1rem;
+}
+.password-input:invalid:focus ~ span, .classification-input:invalid:focus ~ span {
+    display: inline;
+}
+input + span {
+    position: absolute;
+    display: none;
+    color: white;
+    background-color: var(--dgray);
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 1rem;
+}
+input:invalid:focus + span {
+    display: inline;
+}
+.asterisk {
+    display: inline;
+    color: red;
+}
+.submit-button {
+    height: 2rem;
+    margin-top: 2rem;
+    background-color: rgb(243, 207, 178);
+    color: black;
+    border-radius: 10px;
+    border: 2px solid white;
+    border-bottom: 2px solid rgb(131, 131, 131);
+}
+.no-account {
+    margin-top: 2rem;
+}
+.no-account a {
+    margin-top: .5rem;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+    padding: .3rem;
+    width: 5rem;
+}
+footer {
+    border-top: 5px solid var(--dgray);
+    padding-top: .5rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+footer p {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: .9rem;
+}
+
+
+
+
+
+
+
+

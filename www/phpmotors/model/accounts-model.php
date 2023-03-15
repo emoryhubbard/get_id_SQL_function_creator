@@ -1,0 +1,46 @@
+<?php
+/*
+    This is the accounts model for the PHP Motors
+    database.
+*/
+
+function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassword) {
+    $db = getPDO();
+    $sql = 'INSERT INTO clients (clientFirstname, clientLastname, clientEmail, clientPassword)
+        VALUES (:clientFirstname, :clientLastname, :clientEmail, :clientPassword)';
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientFirstname', $clientFirstname, PDO::PARAM_STR);
+    $stmt->bindValue(':clientLastname', $clientLastname, PDO::PARAM_STR);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':clientPassword', $clientPassword, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+}
+/* Function to check if an email address already exists in db */
+function emailExists($clientEmail) {
+    $db = getPDO();
+    $sql = 'SELECT clientEmail FROM clients WHERE clientEmail = :email';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':email', $clientEmail, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $matchEmail = $stmt->fetch(PDO::FETCH_NUM);
+    $stmt->closeCursor();
+    if (empty($matchEmail))
+        return 0;
+    return 1;
+}
+function getCLient($clientEmail) {
+    $db = getPDO();
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->execute();
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientData;
+}
