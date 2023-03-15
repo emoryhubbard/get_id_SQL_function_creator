@@ -1,4 +1,92 @@
-# PMAMP - PhpMyadmin with Apache Mysql and Php
+# Get_id() SQL Function Creator
+
+You can find the main code for the tool here:
+https://github.com/emoryhubbard/get_id_SQL_function_creator/blob/main/www/phpmotors/library/create_get_ids.php
+
+# Generalized SQL get_id() utility topic.
+	get_id() SQL function creator topic.
+	It uses PHP to create the SQL functions
+	you need (versus using SQL to create
+	them, due to current SQL language limits).
+	It is located in www -> phpmotors ->
+	library -> create_get_ids.sql.
+# Repo.
+	https://github.com/emoryhubbard/phpmotors
+# Why?
+	I was simply writing a new
+	"get_id()" function for every table I create.
+	Something like:
+	get_id(table, value)
+	get_id() {
+	SELECT first value, second value of table
+	RETURN id()
+	}
+	With more potential, optional value parameters,
+	to narrow down the record. The first value
+	record is the second column (function assumes
+	first column is primary key), and returns
+	first column value when there is a match.
+# Examle.
+	I had originally envisioned a function like
+	this.
+	INSERT INTO department
+		(department_name, department_code, college_id)
+	VALUES
+		('Computer Information Technology', 'CIT', get_id('college', 'College of Physical Science and Engineering'));
+	However, due to current SQL language limits,
+	I settled on automatically-generated functions
+	like this:
+	INSERT INTO department
+		(department_name, department_code, college_id)
+	VALUES
+		('Computer Information Technology', 'CIT', get_college_id1('College of Physical Science and Engineering'));
+# Why 2 get id functions?
+	A pair of get_id functions, get_tablename_id1(),
+	and get_tablename_id2(), are created because
+	there is no facility for variable parameters
+	in MySQL.
+# More info.
+	https://stackoverflow.com/questions/982798/is-it-possible-to-have-a-default-parameter-for-a-mysql-stored-procedure
+	https://stackoverflow.com/questions/7462552/stored-procedure-with-variable-number-of-parameters
+# Dynamic SQL problems.
+	I would have implemented this tool in SQL
+	directly, but functions can't be used for
+	the dynamic SQL you need to make queries
+	with variable table and column names for
+	a generalized utility. And when you do
+	try to use dynamic sql in a stored procedure,
+	and create the functions you need, you
+	get "Error Code 1295: This command is not
+	supported in the prepared statement protocol
+	yet." You can see my various attempts in my
+	Week 11 folder in intro to databases.
+# Other option.
+	Only possible with Microsoft SQL.
+	https://stackoverflow.com/questions/16308207/a-more-elegant-way-of-escaping-dynamic-sql
+# Function problems.
+	It turns out you can't write just one
+	function that does what you want, since you
+	can't use dynamic SQL. However, you can get
+	close. You CAN write just one stored
+	procedure, or, since it is not very helpful
+	when using stored procedure only for data
+	insertion (see using stored procedure only),
+	it would be EVEN BETTER to write just one
+	stored procedure
+	that dynamically makes all the functions
+	you need. I consider this an acceptable
+	workaround the preserves the user-friendliness,
+	and functionality, of the utility. See dynamic
+	SQL problems for why you can't yet.
+# Why?
+	https://www.sommarskog.se/dynamic_sql.html
+	Find "full stop" in the page to see why.
+# More info.
+	https://stackoverflow.com/questions/59923919/using-dynamic-sql-in-mysql-function
+	https://stackoverflow.com/questions/12568577/what-is-the-workaround-for-using-dynamic-sql-in-a-stored-procedure
+	https://stackoverflow.com/questions/14506871/how-to-execute-a-stored-procedure-inside-a-select-query
+
+# PMAMP Running Instructions - PhpMyadmin with Apache Mysql and Php
 
 Docker with Apache, PHP, MySQL, phpMyAdmin
 
